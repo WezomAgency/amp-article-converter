@@ -1,1 +1,1 @@
-# amp-article-converter
+# AMP Article Converter
