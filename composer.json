@@ -1,0 +1,23 @@
+{
+    "name": "wezom-agency/amp-article-converter",
+    "description": "",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Oleg Dutchenko",
+            "email": "dutchenko.o.dev@gmail.com"
+        }
+    ],
+    "require": {
+        "sunra/php-simple-html-dom-parser": "^1.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "WezomAgency\\": "src/WezomAgency/"
+        }
+    },
+    "scripts": {
+        "dev": "browser-sync start --proxy \"amp-article-converter\" -f \"src/**/*.*,examples/**/*.*\""
+    }
+}
