@@ -16,8 +16,5 @@
         "psr-4": {
             "WezomAgency\\": "src/WezomAgency/"
         }
-    },
-    "scripts": {
-        "dev": "browser-sync start --proxy \"amp-article-converter\" -f \"src/**/*.*,examples/**/*.*\""
     }
 }

@@ -62,17 +62,12 @@ class AmpArticleConverter
     /**
      * @param \simplehtmldom_1_5\simple_html_dom_node|\simplehtmldom_1_5\simple_html_dom_node[] $element
      * @param string $attr
+     * @return bool
      */
-    protected function https ($element, $attr) {
+    protected function mustBeHTTPS($element, $attr)
+    {
         $url = $element->attr[$attr];
-        $lower = strtolower($url);
-        if (strpos($lower, '//') === 0) {
-            $url = preg_replace('/^\/\//', 'https://', $url);
-            $element->setAttribute($attr, $url);
-        } elseif (strpos($lower, 'http://') === 0) {
-            $url = preg_replace('/^http:\/\//', 'https://', $url);
-            $element->setAttribute($attr, $url);
-        }
+        return strpos(strtolower($url), 'https://') === 0;
     }
 
     /**
@@ -225,8 +220,12 @@ class AmpArticleConverter
                 continue;
             }
             $element->setAttribute($this->dataAttrElementConverted, true);
-            $this->https($element, 'src');
+            $element->setAttribute('controls', true);
             $noscript = $this->noscriptFallback($element);
+            if ($this->mustBeHTTPS($element, 'src') !== true) {
+                $element->outertext = '';
+                continue;
+            }
 
             $element->setAttribute('height', $height);
             $element->setAttribute('width' , $width);
@@ -258,7 +257,6 @@ class AmpArticleConverter
                 continue;
             }
             $element->setAttribute($this->dataAttrElementConverted, true);
-            $this->https($element, 'src');
 
             $element->removeAttribute('align');
             $element->removeAttribute('hspace');

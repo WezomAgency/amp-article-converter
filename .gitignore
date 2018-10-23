@@ -4,9 +4,11 @@
 /.vagrant
 /export
 /nbproject
+/node_modules
 /vendor
 /atlassian-ide-plugin.xml
 /composer.phar
+/package-lock.json
 
 # all
 #------------------------------------
