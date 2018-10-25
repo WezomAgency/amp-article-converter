@@ -1,7 +1,8 @@
 <?php
 
 $loader = require_once '../vendor/autoload.php';
-use WezomAgency\AmpArticleConverter;
+
+use WezomAgency\Amp\ArticleConverter;
 
 ?>
 <!doctype html>
@@ -23,22 +24,18 @@ use WezomAgency\AmpArticleConverter;
     <div class="container">
 	    <div class="article">
 		    <?php
-		        $content = file_get_contents('./content/images.php');
-                $article = new AmpArticleConverter($content, (object)[
+		        $content = file_get_contents('./content/font.php');
+                $article = new ArticleConverter($content, [
                 		// 'noscript_fallback' => false
                 ]);
-                $article->converAll();
-		        echo $article;
+                $article->convertAll();
 		    ?>
-		    <hr>
-            <?php
-	            $content = file_get_contents('./content/audio.php');
-	            $article = new AmpArticleConverter($content, (object)[
-	                // 'noscript_fallback' => false
-	            ]);
-	            $article->converAll();
-	            echo $article;
-            ?>
+		    <table width="100%" border="1" cellspacing="0" cellpadding="5">
+			    <tr valign="top">
+				    <td width="50%"><?= $content; ?></td>
+				    <td width="50%"><?= $article; ?></td>
+			    </tr>
+		    </table>
 		    <hr>
 	    </div>
     </div>

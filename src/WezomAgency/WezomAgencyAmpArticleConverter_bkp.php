@@ -3,9 +3,10 @@
 namespace WezomAgency;
 
 use Sunra\PhpSimple\HtmlDomParser;
+use WezomAgency\Elements\AbstractFont2SpanConverter;
 
 
-class AmpArticleConverter
+class WezomAgencyAmpArticleConverterBkp
 {
     /**
      * AmpArticleConverter constructor.
@@ -182,6 +183,9 @@ class AmpArticleConverter
     {
         $elements = $this->getElements('font');
         foreach ($elements as $element) {
+            new AbstractFont2SpanConverter($element)
+        }
+        /*foreach ($elements as $element) {
             $element->tag = $tag;
             $color = $element->attr['color'];
             $face = $element->attr['face'];
@@ -199,7 +203,7 @@ class AmpArticleConverter
             if ($color || $face) {
                 $element->setAttribute('style', $style);
             }
-        }
+        }*/
     }
 
     /**
