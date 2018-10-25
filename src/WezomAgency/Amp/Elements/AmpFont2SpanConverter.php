@@ -2,9 +2,9 @@
 
 namespace WezomAgency\Amp\Elements;
 
-use WezomAgency\Amp\Core\AbstractElementConverter;
+use WezomAgency\Amp\Core\AmpAbstractElementConverter;
 
-class Font2SpanConverter extends AbstractElementConverter
+class AmpFont2SpanConverter extends AmpAbstractElementConverter
 {
     /** @type bool */
     protected $saveFaceAttrValue = null;

@@ -5,7 +5,7 @@ namespace WezomAgency\Amp\Core;
 use Sunra\PhpSimple\HtmlDomParser;
 
 
-abstract class AbstractConverter
+abstract class AmpAbstractConverter
 {
     /** @type \simplehtmldom_1_5\simple_html_dom_node|\simplehtmldom_1_5\simple_html_dom|bool */
     protected $html = null;

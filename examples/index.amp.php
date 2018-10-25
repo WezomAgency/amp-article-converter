@@ -2,7 +2,7 @@
 
 $loader = require_once '../vendor/autoload.php';
 
-use WezomAgency\Amp\ArticleConverter;
+use WezomAgency\Amp\AmpArticleConverter;
 
 ?>
 <!doctype html>
@@ -25,7 +25,7 @@ use WezomAgency\Amp\ArticleConverter;
 	    <div class="article">
 		    <?php
 		        $content = file_get_contents('./content/font.php');
-                $article = new ArticleConverter($content, [
+                $article = new AmpArticleConverter($content, [
                 		// 'noscript_fallback' => false
                 ]);
                 $article->convertAll();
