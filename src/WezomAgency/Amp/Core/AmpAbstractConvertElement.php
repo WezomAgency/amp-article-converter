@@ -3,7 +3,7 @@
 namespace WezomAgency\Amp\Core;
 
 
-abstract class AmpAbstractElementConverter extends AmpAbstractConverter
+abstract class AmpAbstractConvertElement extends AmpAbstractConverter
 {
     /** @type string */
     protected $noscript = '';

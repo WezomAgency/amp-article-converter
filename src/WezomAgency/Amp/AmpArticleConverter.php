@@ -3,7 +3,7 @@
 namespace WezomAgency\Amp;
 
 use WezomAgency\Amp\Core\AmpAbstractConverter;
-use WezomAgency\Amp\Elements\AmpFont2SpanConverter;
+use WezomAgency\Amp\Elements\AmpConvertFont2Span;
 
 class AmpArticleConverter extends AmpAbstractConverter
 {
@@ -18,7 +18,7 @@ class AmpArticleConverter extends AmpAbstractConverter
     public function covertFont2Span ($selector, $configuration = []) {
         $elements = $this->html->find($selector);
         foreach ($elements as $element) {
-            new AmpFont2SpanConverter($element, $configuration);
+            new AmpConvertFont2Span($element, $configuration);
         }
     }
 }

@@ -2,9 +2,9 @@
 
 namespace WezomAgency\Amp\Elements;
 
-use WezomAgency\Amp\Core\AmpAbstractElementConverter;
+use WezomAgency\Amp\Core\AmpAbstractConvertElement;
 
-class AmpFont2SpanConverter extends AmpAbstractElementConverter
+class AmpConvertFont2Span extends AmpAbstractConvertElement
 {
     /** @type bool */
     protected $saveFaceAttrValue = null;
@@ -44,8 +44,55 @@ class AmpFont2SpanConverter extends AmpAbstractElementConverter
         }
         if ($this->saveSizeAttrValue) {
             $size = $this->html->attr['size'];
-            if ($size) {
-                array_push($this->savedAttrsValues, 'font-size:' . $size);
+            if ($size !== null) {
+                $intsize = intval($size);
+                if ($intsize > 7) {
+                    $size = '7';
+                } elseif ($intsize < -7 || $intsize === 0) {
+                    $size = '-7';
+                }
+                switch ('x' . $size) {
+                    case 'x1':
+                    case 'x-2':
+                    case 'x-3':
+                    case 'x-4':
+                    case 'x-5':
+                    case 'x-6':
+                    case 'x-7':
+                        $size = 'x-small';
+                        break;
+                    case 'x2':
+                    case 'x-1':
+                        $size = 'small';
+                        break;
+                    case 'x3':
+                        $size = 'medium';
+                        break;
+                    case 'x4':
+                    case 'x+1':
+                        $size = 'large';
+                        break;
+                    case 'x5':
+                    case 'x+2':
+                        $size = 'x-large';
+                        break;
+                    case 'x6':
+                    case 'x+3':
+                        $size = 'xx-large';
+                        break;
+                    case 'x7':
+                    case 'x+4':
+                    case 'x+5':
+                    case 'x+6':
+                    case 'x+7':
+                        $size = '3rem;font-size:-webkit-xxx-large';
+                        break;
+                    default:
+                        $size = null;
+                }
+                if ($size) {
+                    array_push($this->savedAttrsValues, 'font-size:' . $size);
+                }
             }
         }
     }
