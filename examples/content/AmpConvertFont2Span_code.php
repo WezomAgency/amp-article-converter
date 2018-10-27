@@ -2,7 +2,7 @@
 
 <ul>
 	<li>
-		<font face="monospace">monospace face</font>
+		<font face="monospace" size="abc">monospace face</font>
 	</li>
 	<li>
 		<font color="blue">blue color</font>

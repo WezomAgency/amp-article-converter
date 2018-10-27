@@ -24,126 +24,20 @@ use WezomAgency\Amp\AmpArticleConverter;
 <body>
     <div class="container">
 	    <div class="article">
-		    <amp-accordion animate>
-			    <section>
-				    <h2 class="spec-header">AmpConvertFont2Span</h2>
-				    <div>
-					    <ol class="spec">
-						    <li>
-							    <amp-accordion animate>
-								    <section>
-									    <h4 class="method-header">setupConfiguration()</h4>
-									    <div class="method-desc">
-										    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
-											    at
-											    consectetur culpa dolorem doloremque, fugit minima repellendus
-											    repudiandae! Adipisci architecto nihil quaerat veritatis. Blanditiis
-											    hic
-											    molestias odit ratione sed veniam!</p>
-									    </div>
-								    </section>
-							    </amp-accordion>
-						    </li>
-						    <li>
-							    <amp-accordion animate>
-								    <section>
-									    <h4 class="method-header">processingNecessaryAttributes()</h4>
-									    <div class="method-desc">
-										    <ul>
-											    <li>
-												    <em>if (saveFaceAttrValue === true)</em>
-												    сохранить значения атрибута <code>face</code> <br>
-												    как значение для CSS свойcтва
-												    <code>font-family</code>
-											    </li>
-											    <li>
-												    <em>if (saveColorAttrValue === true)</em>
-												    сохранить значения атрибута <code>color</code> <br>
-												    как значение для CSS свойcтва <code>color</code>
-											    </li>
-											    <li>
-												    <em>if (saveSizeAttrValue === true)</em>
-												    сохранить значения атрибута <code>size</code> <br>
-												    как значение для CSS свойcтва <code>font-size</code><br>
-												    с конвертацией значения:
-												    <em>целое число</em>
-												    <ul>
-													    <li><b>1</b> - <code>font-size: x-small</code></li>
-													    <li><b>2</b> - <code>font-size: small</code></li>
-													    <li><b>3</b> - <code>font-size: medium</code></li>
-													    <li><b>4</b> - <code>font-size: large</code></li>
-													    <li><b>5</b> - <code>font-size: x-large</code></li>
-													    <li><b>6</b> - <code>font-size: xx-large</code></li>
-													    <li><b>7</b> - <code>font-size: 3rem; font-size:
-															    -webkit-xxx-large</code>
-													    </li>
-												    </ul>
-											    </li>
-										    </ul>
-									    </div>
-								    </section>
-							    </amp-accordion>
-						    </li>
-						    <li>
-							    <amp-accordion animate>
-								    <section>
-									    <h4 class="method-header">removeProhibitedAttributes()</h4>
-									    <div class="method-desc">
-										    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
-											    at
-											    consectetur culpa dolorem doloremque, fugit minima repellendus
-											    repudiandae! Adipisci architecto nihil quaerat veritatis. Blanditiis
-											    hic
-											    molestias odit ratione sed veniam!</p>
-									    </div>
-								    </section>
-							    </amp-accordion>
-						    </li>
-						    <li>
-							    <amp-accordion animate>
-								    <section>
-									    <h4 class="method-header">changeTagName()</h4>
-									    <div class="method-desc">
-										    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium at
-											    consectetur culpa dolorem doloremque, fugit minima repellendus
-											    repudiandae! Adipisci architecto nihil quaerat veritatis. Blanditiis hic
-											    molestias odit ratione sed veniam!</p>
-									    </div>
-								    </section>
-							    </amp-accordion>
-						    </li>
-						    <li>
-							    <amp-accordion animate>
-								    <section>
-									    <h4 class="method-header">finish()</h4>
-									    <div>
-										    <div>
-											    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
-												    at
-												    consectetur culpa dolorem doloremque, fugit minima repellendus
-												    repudiandae! Adipisci architecto nihil quaerat veritatis. Blanditiis
-												    hic
-												    molestias odit ratione sed veniam!</p>
-										    </div>
-									    </div>
-								    </section>
-							    </amp-accordion>
-						    </li>
-					    </ol>
-				    </div>
-			    </section>
-		    </amp-accordion>
-
-		    <p><em>рабочий код</em></p>
+		    <ol>
+			    <li><a href="#amp-convert-font2span_spec">AmpConvertFont2Span_spec</a></li>
+		    </ol>
+	    </div>
+	    <hr>
+	    <div class="article">
 		    <?php
-		        $content = file_get_contents('./content/font.php');
-                $article = new AmpArticleConverter($content, [
-                		// 'noscript_fallback' => false
-                ]);
+                $spec = file_get_contents('./content/AmpConvertFont2Span_spec.php');
+		        $code = file_get_contents('./content/AmpConvertFont2Span_code.php');
+                $article = new AmpArticleConverter($code, []);
                 $article->convertAll();
+                echo '<div id="amp-convert-font2span_spec">' . $spec . '</div>';
                 echo $article;
 		    ?>
-		    <hr>
 	    </div>
     </div>
 </body>

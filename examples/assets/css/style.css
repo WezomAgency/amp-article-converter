@@ -14,7 +14,8 @@ body {
 }
 
 .article {
-	padding: 1rem;
+	padding: 0 1rem;
+	margin: 1rem 0;
 }
 
 .spec {
@@ -47,7 +48,7 @@ body {
 .method-header {
 	padding: .25rem .5rem;
 	user-select: none;
-	margin-bottom:.4rem;
+	margin: .4rem 0;
 }
 
 .method-header::after {
@@ -68,7 +69,9 @@ body {
 }
 
 code {
+	font-weight: normal;
 	background: #eee;
+	font-style: italic;
 	font-size: 1.25em;
 	padding: 0 5px;
 }

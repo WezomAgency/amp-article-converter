@@ -13,7 +13,7 @@ abstract class AmpAbstractConvertElement extends AmpAbstractConverter
         parent::__construct($html, $configuration);
 
         if ($this->hasHtml()) {
-            $this->processingNecessaryAttributes();
+            $this->processingImportantAttributes();
             $this->removeProhibitedAttributes();
             $this->noScriptFallback();
             $this->changeTagName();
@@ -23,7 +23,7 @@ abstract class AmpAbstractConvertElement extends AmpAbstractConverter
 
     protected function removeProhibitedAttributes () {}
 
-    protected function processingNecessaryAttributes () {}
+    protected function processingImportantAttributes () {}
 
     protected function noScriptFallback() {}
 

@@ -28,7 +28,7 @@ class AmpConvertFont2Span extends AmpAbstractConvertElement
         $this->saveSizeAttrValue = $configuration['saveSizeAttrValue'] !== false;
     }
 
-    protected function processingNecessaryAttributes()
+    protected function processingImportantAttributes()
     {
         if ($this->saveFaceAttrValue) {
             $face = $this->html->attr['face'];
@@ -44,13 +44,15 @@ class AmpConvertFont2Span extends AmpAbstractConvertElement
         }
         if ($this->saveSizeAttrValue) {
             $size = $this->html->attr['size'];
-            if ($size !== null) {
+            if ($size !== null && is_numeric($size)) {
                 $intsize = intval($size);
                 if ($intsize > 7) {
                     $size = '7';
                 } elseif ($intsize < -7 || $intsize === 0) {
                     $size = '-7';
                 }
+
+
                 switch ('x' . $size) {
                     case 'x1':
                     case 'x-2':
