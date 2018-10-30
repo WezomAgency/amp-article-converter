@@ -3,9 +3,10 @@
 namespace WezomAgency;
 
 use Sunra\PhpSimple\HtmlDomParser;
+use WezomAgency\Elements\AbstractFont2SpanConverter;
 
 
-class AmpArticleConverter
+class WezomAgencyAmpArticleConverterBkp
 {
     /**
      * AmpArticleConverter constructor.
@@ -62,17 +63,12 @@ class AmpArticleConverter
     /**
      * @param \simplehtmldom_1_5\simple_html_dom_node|\simplehtmldom_1_5\simple_html_dom_node[] $element
      * @param string $attr
+     * @return bool
      */
-    protected function https ($element, $attr) {
+    protected function mustBeHTTPS($element, $attr)
+    {
         $url = $element->attr[$attr];
-        $lower = strtolower($url);
-        if (strpos($lower, '//') === 0) {
-            $url = preg_replace('/^\/\//', 'https://', $url);
-            $element->setAttribute($attr, $url);
-        } elseif (strpos($lower, 'http://') === 0) {
-            $url = preg_replace('/^http:\/\//', 'https://', $url);
-            $element->setAttribute($attr, $url);
-        }
+        return strpos(strtolower($url), 'https://') === 0;
     }
 
     /**
@@ -187,6 +183,9 @@ class AmpArticleConverter
     {
         $elements = $this->getElements('font');
         foreach ($elements as $element) {
+            new AbstractFont2SpanConverter($element)
+        }
+        /*foreach ($elements as $element) {
             $element->tag = $tag;
             $color = $element->attr['color'];
             $face = $element->attr['face'];
@@ -204,7 +203,7 @@ class AmpArticleConverter
             if ($color || $face) {
                 $element->setAttribute('style', $style);
             }
-        }
+        }*/
     }
 
     /**
@@ -225,8 +224,12 @@ class AmpArticleConverter
                 continue;
             }
             $element->setAttribute($this->dataAttrElementConverted, true);
-            $this->https($element, 'src');
+            $element->setAttribute('controls', true);
             $noscript = $this->noscriptFallback($element);
+            if ($this->mustBeHTTPS($element, 'src') !== true) {
+                $element->outertext = '';
+                continue;
+            }
 
             $element->setAttribute('height', $height);
             $element->setAttribute('width' , $width);
@@ -258,7 +261,6 @@ class AmpArticleConverter
                 continue;
             }
             $element->setAttribute($this->dataAttrElementConverted, true);
-            $this->https($element, 'src');
 
             $element->removeAttribute('align');
             $element->removeAttribute('hspace');

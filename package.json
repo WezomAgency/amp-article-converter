@@ -1,0 +1,11 @@
+{
+  "name": "amp-article-converter",
+  "version": "0.0.0",
+  "description": "THIS JUST FOR DEV WORKFLOW",
+  "scripts": {
+    "dev": "browser-sync start --proxy \"amp-article-converter\" -f \"src/**/*.*,examples/**/*.*\""
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.3"
+  }
+}

@@ -1,5 +1,6 @@
 html {
 	font-family: Merriweather, sans-serif;
+	line-height: 1.3;
 }
 
 body {
@@ -8,10 +9,79 @@ body {
 
 .container {
 	position: relative;
-	max-width: 680px;
+	max-width: 760px;
 	margin: 1rem auto;
 }
 
 .article {
-	padding: 1rem;
+	padding: 0 1rem;
+	margin: 1rem 0;
+}
+
+.spec {
+	font-size: .9em;
+}
+
+.spec em {
+	display: block;
+	color: #fe7d20;
+	font-weight: bold;
+}
+
+.spec-header {
+	padding: .25rem 1rem;
+	user-select: none;
+}
+
+.spec-header::after {
+	content: '▼ specs';
+	display: block;
+	font-size: 1rem;
+	font-style: italic;
+	color: #666;
+}
+
+.spec-header[aria-expanded="true"]::after {
+	content: '▲ specs';
+}
+
+.method-header {
+	padding: .25rem .5rem;
+	user-select: none;
+	margin: .4rem 0;
+}
+
+.method-header::after {
+	content: ' ▼';
+	color: #666;
+}
+
+.method-header[aria-expanded="true"]::after {
+	content: ' ▲';
+}
+
+.method-desc > :first-child {
+	margin-top: 0;
+}
+
+.method-desc > :last-child {
+	margin-bottom: .75rem;
+}
+
+code {
+	font-weight: normal;
+	background: #eee;
+	font-style: italic;
+	font-size: 1.25em;
+	padding: 0 5px;
+}
+
+li {
+	margin-top: .4em;
+}
+
+hr {
+	margin: 1.5rem 0;
+	border-width: 0;
+	border-top: 3px solid #ddd;
 }
